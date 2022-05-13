@@ -57,13 +57,13 @@ func GetHttpHeadersRetrieve(form RetrieveCheckoutFormRequest, options Options) m
 
 func PrepareAuthorizationString(form CreateCheckoutFormInitializeRequest, randomString string, options Options) string {
 	iyzicoResource := IyzipayResourceInit()
-	hash := GenerateHash(options.ApiKey, options.SecretKey, randomString, helpers.GetRequestString(form.String()))
+	hash := helpers.GenerateHash(options.ApiKey, options.SecretKey, randomString, helpers.GetRequestString(form.String()))
 	return fmt.Sprintf("%s%s%s%s", iyzicoResource.IyziwsHeaderName, options.ApiKey, iyzicoResource.Colon, hash)
 }
 
 func PrepareAuthorizationStringRetrieve(form RetrieveCheckoutFormRequest, randomString string, options Options) string {
 	iyzicoResource := IyzipayResourceInit()
-	hash := GenerateHash(options.ApiKey, options.SecretKey, randomString, helpers.GetRequestString(form.String()))
+	hash := helpers.GenerateHash(options.ApiKey, options.SecretKey, randomString, helpers.GetRequestString(form.String()))
 	return fmt.Sprintf("%s%s%s%s", iyzicoResource.IyziwsHeaderName, options.ApiKey, iyzicoResource.Colon, hash)
 }
 

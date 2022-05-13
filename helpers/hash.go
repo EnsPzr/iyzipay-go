@@ -1,4 +1,4 @@
-package models
+package helpers
 
 import (
 	"crypto/sha1"
@@ -6,10 +6,10 @@ import (
 )
 
 func GenerateHash(apikey, secretKey, randomString string, form string) string {
-	hashlenecek := apikey + randomString + secretKey + form
+	willBeHashed := apikey + randomString + secretKey + form
 
 	//SHA1.Create().ComputeHash
-	computedHash := computeHash(hashlenecek)
+	computedHash := computeHash(willBeHashed)
 	b64 := base64.StdEncoding.EncodeToString(computedHash)
 	return b64
 }
